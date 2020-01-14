@@ -1,0 +1,83 @@
+
+.playlist-songs{
+    padding: $padding;
+    margin: 200px 0 50px 0;
+    box-sizing: border-box;
+    font-family: $main-font;
+}
+
+.playlist-songs__heading{
+    font-weight: bold;
+    font-family: $main-font;
+    font-size: 0.9375rem;
+}
+
+.playlist-songs-list{
+    list-style: none;
+    margin: 30px 0 0 0;
+    padding:0;
+}
+
+.playlist-songs-list__item{
+    margin: 15px 0;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.playlist-songs-list__container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.playlist-songs-list__img-container{
+    width: 30px;
+    cursor: pointer;
+    height: 30px;
+    margin: 0 20px 0 0;
+}
+.playlist-songs-list__img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.playlist-songs-list__heading{
+    margin: 0;
+    font-size: .875rem;
+}
+
+.playlist-songs-list__artist{
+    font-size: .75rem;
+    margin: 2px 0 0 0;
+}
+
+.playlist-songs-list__length{
+    font-size: .875rem;
+    margin-left: auto;
+}
+
+.playlist-songs__top-songs, .playlist-songs__songs {
+    text-align: center;
+    margin: 0;
+}
+
+.listen-btn{
+    width: 100%;
+    height: 60px;
+    border-radius: 50px;
+    border: 4px #FF1168 solid;
+    color: #FF1168;
+    background: transparent;
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin-top: 30px;
+    cursor: pointer;
+}
+
+.listen-btn:hover{
+    background: rgba(255, 17, 104, 0.2);
+    transform: scale(1.05);
+}

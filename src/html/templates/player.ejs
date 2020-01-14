@@ -1,0 +1,35 @@
+<%- include('../partials/head.ejs') %>
+<title>Player</title>
+<%- include('../partials/after-head.ejs') %>
+<%- include('../partials/header.ejs') %>
+<main>
+    <section class="player-section">
+        <div class="profile">
+            <img src="https://via.placeholder.com/300x300" alt="Profile picture" class="profile__img">
+            <img src="/assets/images/circle.svg" alt="Profile background" class="profile_background">
+        </div>
+
+        <div class="player-menu">
+            <h3 class="player-menu__title">Song Name</h3>
+            <h3 class="player-menu__artist">Artist</h3>
+            <div class="progress">
+                <div class="progress__bar">
+                    <img class="progress__current" src="/assets/images/current-player.svg" alt="Current time in song">
+                </div>
+                <div class="progress__time-container">
+                    <p class="progress__current-time">0:00</p>
+                    <p class="progress__song-time">2:54</p>
+                </div>
+
+                <div class="player-functions">
+                    <img src="/assets/images/skip.svg" alt="Skip backwards" class="player-functions__skip-backwards">
+                    <img src="/assets/images/rewind.svg" alt="Rewind backwards" class="player-functions__rewind-backwards">
+                    <img src="/assets/images/player-play.svg" alt="Pause and play song" class="player-functions__play">
+                    <img src="/assets/images/rewind.svg" alt="Rewind forward" class="player-functions__rewind-forward">
+                    <img src="/assets/images/skip.svg" alt="Skip forward" class="player-functions__skip-forward">
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<%- include('../partials/after-body.ejs') %>

@@ -1,0 +1,71 @@
+
+.releases{
+    margin-top: 170px;
+    font-family: $main-font;
+}
+
+.releases__container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.releases__heading{
+    font-weight: bold;
+    font-family: $main-font;
+    font-size: 0.9375rem;
+}
+
+.releases__view{
+    text-decoration: none;
+    background: $main-gradient;
+    font-family: $main-font;
+    max-width: 200px;
+    font-size: 0.9375rem;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.releases-list{
+    list-style: none;
+    margin: 0;
+    padding:0;
+}
+
+.releases-list__item{
+    margin: 15px 0;
+    display: flex;
+    width: 100%;
+}
+
+.release-list__container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.releases-list__img-container{
+    width: 50px;
+    height: 50px;
+    margin: 0 20px 0 0;
+}
+.releases-list__img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.release-list__heading{
+    margin: 0;
+    font-size: .875rem;
+}
+
+.release-list__artist{
+    font-size: .75rem;
+    margin: 2px 0 0 0;
+}
+
+.release-list__songs-amount{
+    font-size: .875rem;
+    margin-left: auto;
+}
