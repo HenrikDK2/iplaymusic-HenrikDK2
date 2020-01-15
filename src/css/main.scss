@@ -1,29 +1,40 @@
-@import 'modules/variables';
-@import 'modules/nav';
-@import 'modules/forside';
-@import 'modules/featured';
-@import 'modules/albums';
-@import 'modules/albums-releases';
-@import 'modules/album-details';
-@import 'modules/song-list';
-@import 'modules/categories';
-@import 'modules/playlist-section';
-@import 'modules/playlist-songs';
-@import 'modules/player';
+@import "modules/variables";
+@import "modules/nav";
+@import "modules/forside";
+@import "modules/featured";
+@import "modules/albums";
+@import "modules/albums-releases";
+@import "modules/album-details";
+@import "modules/song-list";
+@import "modules/categories";
+@import "modules/playlist-section";
+@import "modules/playlist-songs";
+@import "modules/player";
 
+@import "modules/nav-footer";
 
-
-
-@import 'modules/nav-footer';
-
-body{
-    overflow-x: hidden;
-    -ms-overflow-style: none;  /* Internet Explorer 10+ */
-    scrollbar-width: none;  /* Firefox */
+body {
+  overflow-x: hidden;
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
 }
 
-body::-webkit-scrollbar{
-    width: 0;
-    background: transparent;
-    display: none;
+body::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+  display: none;
+}
+
+//Theme
+.dark-theme-icon-font{
+    fill: #fff;
+    color: #fff;
+}
+
+.dark-theme-pri {
+  background: #341931;
+}
+
+.dark-theme-alt {
+  background: #341931;
 }

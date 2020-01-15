@@ -1,6 +1,5 @@
 .categories {
     padding: $padding;
-    margin-top: 80px;
     font-family: $main-font;
   }
 
@@ -21,7 +20,7 @@
   }
 
   .categories-list__item{
-    margin: 10px 0;
+    margin: 15px 0;
   }
 
   .categories-list__button{
@@ -30,7 +29,7 @@
     height: 54px;
     border-radius: 8px;
     display: flex;
-    padding: $padding;
+    padding: 0 25px;
     box-sizing: border-box;
     justify-content: space-between;
     align-items: center;
