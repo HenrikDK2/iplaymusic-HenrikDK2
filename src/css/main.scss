@@ -1,7 +1,6 @@
 @import "modules/variables";
 @import "modules/loader";
 @import "modules/nav";
-@import "modules/forside";
 @import "modules/featured";
 @import "modules/albums";
 @import "modules/albums-releases";
@@ -18,6 +17,9 @@ body {
   overflow-x: hidden;
   -ms-overflow-style: none; /* Internet Explorer 10+ */
   scrollbar-width: none; /* Firefox */
+  margin: 0;
+  padding: 0;
+  background: var(--main-background);
 }
 
 body::-webkit-scrollbar {

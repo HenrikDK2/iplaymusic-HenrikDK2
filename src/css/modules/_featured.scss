@@ -1,5 +1,5 @@
 .featured {
-  padding: 80px 25px 100px;
+  padding: 80px 0px 100px;
 }
 
 .featured__heading {
@@ -7,6 +7,7 @@
   font-size: 2rem;
   font-weight: bold;
   max-width: 200px;
+  margin-left: 25px;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -14,6 +15,9 @@
 .featured-list {
   list-style: none;
   margin: 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   padding: 0;
 }
 
@@ -23,8 +27,9 @@
   -webkit-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.15);
   -moz-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.15);
   box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.15);
-  margin: 50px 0;
+  margin: 50px 25px;
   position: relative;
+  max-width: 350px;
   border-radius: 3%;
 }
 
