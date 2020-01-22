@@ -1,6 +1,5 @@
 .releases {
   margin-top: 170px;
-  font-family: $main-font;
 }
 
 .releases__container {
@@ -11,14 +10,13 @@
 
 .releases__heading {
   font-weight: bold;
-  font-family: $main-font;
   font-size: 0.9375rem;
+  color: var(--color);
 }
 
 .releases__view {
   text-decoration: none;
-  background: $main-gradient;
-  font-family: $main-font;
+  background: var(--main-gradient);
   max-width: 200px;
   font-size: 0.9375rem;
   -webkit-background-clip: text;
@@ -57,6 +55,7 @@
 .releases-list__heading {
   margin: 0;
   width: 45vw;
+  color: var(--color);
   font-size: 0.875rem;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -66,9 +65,11 @@
 .releases-list__artist {
   font-size: 0.75rem;
   margin: 2px 0 0 0;
+  color: var(--color);
 }
 
 .releases-list__songs-amount {
   font-size: 0.875rem;
   margin-left: auto;
+  color: var(--color);
 }

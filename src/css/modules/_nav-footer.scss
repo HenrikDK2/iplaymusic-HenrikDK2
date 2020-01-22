@@ -1,7 +1,7 @@
 .footer-nav {
   position: fixed;
   bottom: 0;
-  background: #fff;
+  background: var(--nav-background);
   z-index: 10;
   -webkit-box-shadow: 0px -4px 30px 0px rgba(0, 0, 0, 0.15);
   -moz-box-shadow: 0px -4px 30px 0px rgba(0, 0, 0, 0.15);
@@ -29,13 +29,4 @@
 
 .footer-nav-list__img_center {
   height: 50px;
-}
-
-//Theme
-.path-light-select {
-  fill: $path-light-select !important;
-}
-
-.path-dark-select {
-  fill: $path-dark-select !important;
 }

@@ -18,6 +18,7 @@ const observer = new IntersectionObserver(entries => {
     });
 }, { rootMargin: "300px 0px" });
 let id;
+let artistId;
 let getToken = true;
 
 async function token() {
@@ -39,7 +40,7 @@ async function token() {
             })
     } else {
         return myFetch.get('browse/featured-playlists?limit=1').then(res => {
-            if (res.error && res.error.status >= 400) {
+            if (res.error) {
                 getToken = true;
                 token();
             }
@@ -47,69 +48,79 @@ async function token() {
     }
 }
 
+function conditions(array, listSelector, templateID, list) {
+    if (templateID) {
+
+        let clone = document.getElementById(templateID).content.cloneNode(true);
+        if (clone.querySelector(`${listSelector}__heading`)) {
+            clone.querySelector(`${listSelector}__heading`).textContent = array.name;
+        }
+
+        if (array.images && clone.querySelector(`${listSelector}__img`)) {
+            clone.querySelector(`${listSelector}__img`).setAttribute("imgSrc", array.images[0].url);
+        } else if (array.images && array.type !== "artist") {
+            document.querySelector(listSelector).style.background = "url(" + array.images[0].url + ")";
+        }
+        if (clone.querySelector(`${listSelector}__songs-amount`)) {
+            clone.querySelector(`${listSelector}__songs-amount`).textContent = array.total_tracks + " Songs";;
+        }
+        
+        if (clone.querySelector(`${listSelector}__length`) && array.duration_ms) {
+            clone.querySelector(`${listSelector}__length`).textContent = (array.duration_ms / 60000).toFixed(2);
+        }
+        
+        if (clone.querySelector(`${listSelector}__artist`) && array.artists) {
+            clone.querySelector(`${listSelector}__artist`).textContent = array.artists[0].name;
+        }
+        
+        if (clone.querySelector(`${listSelector}__item`)) {
+            if (array.genres && array.type === "artist") {
+                array.genres.forEach((genre, i) => {
+                    if (i < 1) {
+                        clone.querySelector(`${listSelector}__item`).textContent = genre;
+                    } else {
+                        let cloneItem = clone.querySelector(`${listSelector}__item`).cloneNode();
+                        cloneItem.textContent = genre;
+                        clone.append(cloneItem)
+                    }
+                    
+                })
+            }
+        }
+        list.append(clone);
+    }
+
+    if(array.images){
+        document.querySelector(listSelector).src = array.images[0].url;
+    }
+
+    if (array.artists) {
+        artistId = array.artists[0].id;
+    }
+
+    if (array.id) {
+        id = array.id
+    }
+}
+
 async function main(api, apiData, listSelector, templateID, observeSelector, callback) {
     await token();
     myFetch.get(api).then(res => {
+        console.log(res)
         let list = document.querySelector(listSelector);
         if (res[apiData]) {
             res[apiData].items.forEach(array => {
-                console.log(array)
-                let clone = document.getElementById(templateID).content.cloneNode(true);
-                if (clone.querySelector(`${listSelector}__heading`)) {
-                    clone.querySelector(`${listSelector}__heading`).textContent = array.name;
-                }
-
-                if (array.images && clone.querySelector(`${listSelector}__img`)) {
-                    clone.querySelector(`${listSelector}__img`).setAttribute("imgSrc", array.images[0].url);
-                } else {
-                    document.querySelector(listSelector).style.background = "url(" + array.images[0].url + ")";
-                }
-
-                if (clone.querySelector(`${listSelector}__songs-amount`)) {
-                    clone.querySelector(`${listSelector}__songs-amount`).textContent = array.total_tracks + " Songs";;
-                }
-
-                if (clone.querySelector(`${listSelector}__length`)) {
-                    clone.querySelector(`${listSelector}__length`).textContent = (array.duration_ms / 60000).toFixed(2);
-                }
-
-                if (clone.querySelector(`${listSelector}__artist`)) {
-                    clone.querySelector(`${listSelector}__artist`).textContent = array.artists[0].name;
-                }
-                id = array.id
-                list.append(clone)
+                conditions(array, listSelector, templateID, list);
+            });
+        } else if (res.items) {
+            res.items.forEach(array => {
+                conditions(array, listSelector, templateID, list);
             });
         } else {
-            res.items.forEach(array => {
-                console.log(array)
-                let clone = document.getElementById(templateID).content.cloneNode(true);
-                if (clone.querySelector(`${listSelector}__heading`)) {
-                    clone.querySelector(`${listSelector}__heading`).textContent = array.name;
-                }
-
-                if (array.images && clone.querySelector(`${listSelector}__img`)) {
-                    clone.querySelector(`${listSelector}__img`).setAttribute("imgSrc", array.images[0].url);
-                } else if (array.images) {
-                    document.querySelector(listSelector).style.background = "url(" + array.images[0].url + ")";
-                }
-
-                if (clone.querySelector(`${listSelector}__length`)) {
-                    clone.querySelector(`${listSelector}__length`).textContent = (array.duration_ms / 60000).toFixed(2);
-                }
-
-                if (clone.querySelector(`${listSelector}__songs-amount`)) {
-                    clone.querySelector(`${listSelector}__songs-amount`).textContent = array.total_tracks + " Songs";;
-                }
-
-                if (clone.querySelector(`${listSelector}__artist`)) {
-                    clone.querySelector(`${listSelector}__artist`).textContent = array.artists[0].name;
-                }
-                id = array.id
-                list.append(clone)
-            });
+            conditions(res, listSelector, templateID, list);
         }
     }).then(() => {
-        if (observeSelector) {
+        if (observeSelector && observeSelector !== "") {
             new Promise((res, reject) => {
                 res(
                     document.querySelectorAll(observeSelector).forEach(elm => {
@@ -132,6 +143,22 @@ if (document.title === "Featured") {
     main("search?q=a&type=album", "albums", ".featured-album-list", "featuredAlbums", "img");
 } else if (document.title === "Album Details") {
     main("search?q=a&type=album&limit=1", "albums", ".album-details", "featuredAlbum", "img", () => {
-        main(`albums/${id}/tracks?limit=50`, "", ".song-list", "track")
+        main(`albums/${id}/tracks?limit=50`, "", ".song-list", "track", "", () => {
+            main(`artists/${artistId}`, "", ".genre-list", "genre", "");
+        })
     })
+} else if (document.title === "Categories") {
+    main("browse/categories", "categories", ".categories-list", "category", "", () => {
+        document.querySelectorAll('.categories-list__button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                btn.parentElement.querySelector('.categories-genre-list').classList.toggle('categories-genre-list_active')
+            })
+        })
+    })
+} else if (document.title === "Playlist") {
+    main("search?q=a&type=album", "albums", ".playlist-list", "playlist", "img", () => {
+        main(`albums/${id}/tracks?limit=50`, "", ".playlist-songs-list", "track", "")
+    });
+} else if (document.title === "Player") {
+    main("search?q=a&type=artist&limit=1", "artists", ".profile__img", "", "")
 }

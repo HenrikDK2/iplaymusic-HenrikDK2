@@ -1,7 +1,20 @@
-$main-font: 'Poppins', sans-serif;
-$main-background: #fff;
-$heading-color: #341931;
-$padding: 80px 25px 100px;
-$main-gradient: -webkit-linear-gradient(left, #EE0979, #FF6A00);
-$path-light-select: #000;
-$path-dark-select: #fff;
+:root{
+  --main-font: 'Poppins', sans-serif;
+  --main-background: #fff;
+  --nav-background: #fff;
+  --heading-color: #341931;
+  --padding: 80px 25px 100px;
+  --main-gradient: -webkit-linear-gradient(left, #EE0979, #FF6A00);
+  --color: #000;
+  --color-heading: #fff;
+}
+
+[data-theme="dark"]{
+  --main-font: 'Poppins', sans-serif;
+  --main-background: #000;
+  --heading-color: #341931;
+  --padding: 80px 25px 100px;
+  --nav-background: #111625;
+  --main-gradient: -webkit-linear-gradient(left, #EE0979, #FF6A00);
+  --color: #fff;
+}

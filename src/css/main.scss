@@ -11,10 +11,10 @@
 @import "modules/playlist-section";
 @import "modules/playlist-songs";
 @import "modules/player";
-
 @import "modules/nav-footer";
 
 body {
+  font-family: var(--main-font);
   overflow-x: hidden;
   -ms-overflow-style: none; /* Internet Explorer 10+ */
   scrollbar-width: none; /* Firefox */
@@ -24,18 +24,4 @@ body::-webkit-scrollbar {
   width: 0;
   background: transparent;
   display: none;
-}
-
-//Theme
-.dark-theme-icon-font{
-    fill: #fff;
-    color: #fff;
-}
-
-.dark-theme-pri {
-  background: #341931;
-}
-
-.dark-theme-alt {
-  background: #341931;
 }

@@ -5,64 +5,28 @@
 <main>
     <section class="categories">
         <h2 class="categories__heading">Categories</h2>
-
-        <ul class="categories-list">
-            <li class="categories-list__item">
-                <div class="categories-list__button">
-                    <h2 class="categories-list__heading">test</h2>
-                    <h2 class="categories-list__icon">. . .</h2>
-                </div>
-
-                <ul class="categories-genre-list">
-                    <li class="categories-genre-list__item">
-                        <h5 class="categories-genre-list__heading">Test</h5>
-                        <a class="categories-genre-list__link" href="">
-                            <img class="categories-genre-list__img" src="/assets/images/arrow-back.svg"
-                                alt="Arrow back">
-                        </a>
-                    </li>
-
-                    <li class="categories-genre-list__item">
-                        <h5 class="categories-genre-list__heading">Test</h5>
-                        <a class="categories-genre-list__link" href="">
-                            <img class="categories-genre-list__img" src="/assets/images/arrow-back.svg"
-                                alt="Arrow back">
-                        </a>
-                    </li>
-
-                    <li class="categories-genre-list__item">
-                        <h5 class="categories-genre-list__heading">Test</h5>
-                        <a class="categories-genre-list__link" href="">
-                            <img class="categories-genre-list__img" src="/assets/images/arrow-back.svg"
-                                alt="Arrow back">
-                        </a>
-                    </li>
-
-                    <li class="categories-genre-list__item">
-                        <h5 class="categories-genre-list__heading">Test</h5>
-                        <a class="categories-genre-list__link" href="">
-                            <img class="categories-genre-list__img" src="/assets/images/arrow-back.svg"
-                                alt="Arrow back">
-                        </a>
-                    </li>
-                </ul>
-            </li>
-
-            <li class="categories-list__item">
-                <div class="categories-list__button">
-                    <h2 class="categories-list__heading">test</h2>
-                    <h2 class="categories-list__icon">. . .</h2>
-                </div>
-            </li>
-            
-            <li class="categories-list__item">
-                <div class="categories-list__button">
-                    <h2 class="categories-list__heading">test</h2>
-                    <h2 class="categories-list__icon">. . .</h2>
-                </div>
-            </li>
-        </ul>
+        <ul class="categories-list"></ul>
     </section>
 </main>
+
+
+<template id="category">
+    <li class="categories-list__item">
+        <div class="categories-list__button">
+            <h2 class="categories-list__heading">test</h2>
+            <h2 class="categories-list__icon">. . .</h2>
+        </div>
+
+        <ul class="categories-genre-list">
+            <li class="categories-genre-list__item">
+                <h5 class="categories-genre-list__heading">Test</h5>
+                <a class="categories-genre-list__link" href="">
+                    <img class="categories-genre-list__img" src="/assets/images/arrow-back.svg" alt="Arrow back">
+                </a>
+            </li>
+        </ul>
+    </li>
+</template>
+
 <%- include('../partials/footer.ejs') %>
 <%- include('../partials/after-body.ejs') %>

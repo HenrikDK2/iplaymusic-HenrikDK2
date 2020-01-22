@@ -20,13 +20,18 @@
 .nav-list__search {
   width: 25px;
   cursor: pointer;
+  fill: var(--color);
+
 }
 
 .nav-list__heading {
   margin: 0;
-  font-family: $main-font;
   font-size: 0.9375rem;
   font-weight: 300;
   letter-spacing: 2px;
-  color: $heading-color;
+  color: var(--color);
+}
+
+.nav-list__img path{
+  fill: var(--color);
 }

@@ -1,74 +1,77 @@
 .categories {
-    padding: $padding;
-    font-family: $main-font;
-  }
+  padding: var(--padding);
+}
 
 .categories__heading {
-    background: $main-gradient;
-    font-size: 2rem;
-    font-weight: bold;
-    font-family: $main-font;
-    max-width: 200px;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
+  background: var(--main-gradient);
+  font-size: 2rem;
+  font-weight: bold;
+  max-width: 200px;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
-  .categories-list{
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
+.categories-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
 
-  .categories-list__item{
-    margin: 15px 0;
-  }
+.categories-list__item {
+  cursor: pointer;
+  margin: 15px 0;
+}
 
-  .categories-list__button{
-    width: 100%;
-    background: #5EB11C;
-    height: 54px;
-    border-radius: 8px;
-    display: flex;
-    padding: 0 25px;
-    box-sizing: border-box;
-    justify-content: space-between;
-    align-items: center;
-  }
+.categories-list__button {
+  width: 100%;
+  background: #5eb11c;
+  height: 54px;
+  border-radius: 8px;
+  display: flex;
+  padding: 0 25px;
+  box-sizing: border-box;
+  justify-content: space-between;
+  align-items: center;
+}
 
-  .categories-list__heading{
-    font-size: 0.9375rem;
-    font-weight: bold;
-    color: #fff;
-  }
+.categories-list__heading {
+  font-size: 0.9375rem;
+  font-weight: bold;
+  color: var(--color);}
 
-  .categories-list__icon{
-    font-size: 0.9375rem;
-    font-weight: bold;
-    color: #fff;
-  }
+.categories-list__icon {
+  font-size: 0.9375rem;
+  margin-bottom: 18px;
+  font-weight: bold;
+  color: var(--color);}
 
-  .categories-genre-list{
-    list-style: none;
-    padding: 0 40px;
-  }
+.categories-genre-list {
+  list-style: none;
+  padding: 0 40px;
+  display: none;
+}
 
-  .categories-genre-list__item{
-    margin: 10px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+.categories-genre-list_active {
+  display: block;
+}
 
-  .categories-genre-list__heading{
-    font-weight: 300;
-    margin: 0;
-  }
+.categories-genre-list__item {
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-  .categories-genre-list__link{
-    text-decoration: none;
-  }
+.categories-genre-list__heading {
+  font-weight: 300;
+  margin: 0;
+}
 
-  .categories-genre-list__img{
-    height: 12px;
-    transform: rotate(180deg);
-  }
+.categories-genre-list__link {
+  text-decoration: none;
+}
+
+.categories-genre-list__img {
+  height: 12px;
+  transform: rotate(180deg);
+}
