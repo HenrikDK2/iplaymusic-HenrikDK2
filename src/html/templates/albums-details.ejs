@@ -4,83 +4,36 @@
 <%- include('../partials/header.ejs') %>
 <main>
     <section class="album-details">
-        <h2 class="album-details__heading">Placeholder</h2>
-        <h4 class="album-details__songs-amount">12 Songs</h4>
-        <p class="album-details__genre">Genres hastags</p>
-        <ul class="genre-list">
-            <li class="genre-list__item">#country</li>
-            <li class="genre-list__item">#country road</li>
-        </ul>
     </section>
     <section class="song-section">
         <h3 class="song-section__heading">All Songs</h3>
-        <ul class="song-list">
-            <li class="song-list__item">
-                <figure class="song-list__img-container">
-                    <img src="/assets/images/play.svg" alt="play icon" class="song-list__img">
-                </figure>
-
-                <div class="song-list__container">
-                    <h3 class="song-list__heading">Placeholder title</h3>
-                    <p class="song-list__artist">Sony kaleb</p>
-                </div>
-
-                <p class="song-list__length">2:57</p>
-            </li>
-
-            <li class="song-list__item">
-                <figure class="song-list__img-container">
-                    <img src="/assets/images/play.svg" alt="play icon" class="song-list__img">
-                </figure>
-
-                <div class="song-list__container">
-                    <h3 class="song-list__heading">Placeholder title</h3>
-                    <p class="song-list__artist">Sony kaleb</p>
-                </div>
-
-                <p class="song-list__length">2:32</p>
-            </li>
-
-            <li class="song-list__item">
-                <figure class="song-list__img-container">
-                    <img src="/assets/images/play.svg" alt="play icon" class="song-list__img">
-                </figure>
-
-                <div class="song-list__container">
-                    <h3 class="song-list__heading">Placeholder title</h3>
-                    <p class="song-list__artist">Sony kaleb</p>
-                </div>
-
-                <p class="song-list__length">2:32</p>
-            </li>
-
-            <li class="song-list__item">
-                <figure class="song-list__img-container">
-                    <img src="/assets/images/play.svg" alt="play icon" class="song-list__img">
-                </figure>
-
-                <div class="song-list__container">
-                    <h3 class="song-list__heading">Placeholder title</h3>
-                    <p class="song-list__artist">Sony kaleb</p>
-                </div>
-
-                <p class="song-list__length">2:32</p>
-            </li>
-
-            <li class="song-list__item">
-                <figure class="song-list__img-container">
-                    <img src="/assets/images/play.svg" alt="play icon" class="song-list__img">
-                </figure>
-
-                <div class="song-list__container">
-                    <h3 class="song-list__heading">Placeholder title</h3>
-                    <p class="song-list__artist">Sony kaleb</p>
-                </div>
-
-                <p class="song-list__length">2:32</p>
-            </li>
-        </ul>
+        <ul class="song-list"></ul>
     </section>
 </main>
+
+<template id="featuredAlbum">
+    <h2 class="album-details__heading">Placeholder</h2>
+    <h4 class="album-details__songs-amount">12 Songs</h4>
+    <p class="album-details__genre">Genres hastags</p>
+    <ul class="genre-list">
+        <li class="genre-list__item">#country</li>
+        <li class="genre-list__item">#country road</li>
+    </ul>
+</template>
+
+<template id="track">
+    <li class="song-list__item">
+        <figure class="song-list__img-container">
+            <img src="/assets/images/play.svg" alt="play icon" class="song-list__img">
+        </figure>
+
+        <div class="song-list__container">
+            <h3 class="song-list__heading">Placeholder title</h3>
+            <p class="song-list__artist">Sony kaleb</p>
+        </div>
+
+        <p class="song-list__length">2:32</p>
+    </li>
+</template>
 <%- include('../partials/footer.ejs') %>
 <%- include('../partials/after-body.ejs') %>
