@@ -13,14 +13,17 @@
 }
 
 .featured-list {
-  list-style: none;
   margin: 0;
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
+  justify-content: center;
   padding: 0;
 }
 
+.featured-album-list__container {
+  display: flex;
+  justify-content: center;
+}
 .featured-list__item {
   height: 460px;
   transition: opacity 1s;
@@ -30,6 +33,7 @@
   margin: 50px 25px;
   position: relative;
   max-width: 350px;
+  list-style: none;
   border-radius: 3%;
 }
 

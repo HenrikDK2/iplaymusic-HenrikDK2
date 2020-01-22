@@ -56,23 +56,23 @@ function conditions(array, listSelector, templateID, list) {
             clone.querySelector(`${listSelector}__heading`).textContent = array.name;
         }
 
-        if (array.images && clone.querySelector(`${listSelector}__img`)) {
-            clone.querySelector(`${listSelector}__img`).setAttribute("imgSrc", array.images[0].url);
-        } else if (array.images && array.type !== "artist") {
+        if (array.images && clone.querySelector(`img`)) {
+            clone.querySelector(`img`).setAttribute("imgSrc", array.images[0].url);
+        } else if (array.images && array.type !== "artist" && array.type !== "album") {
             document.querySelector(listSelector).style.background = "url(" + array.images[0].url + ")";
         }
         if (clone.querySelector(`${listSelector}__songs-amount`)) {
             clone.querySelector(`${listSelector}__songs-amount`).textContent = array.total_tracks + " Songs";;
         }
-        
+
         if (clone.querySelector(`${listSelector}__length`) && array.duration_ms) {
             clone.querySelector(`${listSelector}__length`).textContent = (array.duration_ms / 60000).toFixed(2);
         }
-        
+
         if (clone.querySelector(`${listSelector}__artist`) && array.artists) {
             clone.querySelector(`${listSelector}__artist`).textContent = array.artists[0].name;
         }
-        
+
         if (clone.querySelector(`${listSelector}__item`)) {
             if (array.genres && array.type === "artist") {
                 array.genres.forEach((genre, i) => {
@@ -83,14 +83,14 @@ function conditions(array, listSelector, templateID, list) {
                         cloneItem.textContent = genre;
                         clone.append(cloneItem)
                     }
-                    
+
                 })
             }
         }
         list.append(clone);
     }
 
-    if(array.images){
+    if (array.images && document.querySelector(listSelector).src) {
         document.querySelector(listSelector).src = array.images[0].url;
     }
 
@@ -140,7 +140,9 @@ if (document.title === "Featured") {
     main("browse/featured-playlists", "playlists", ".featured-list", "feedTemplate", "img");
 } else if (document.title === "Albums") {
     main("browse/new-releases?country=DK&offset=0&limit=30", "albums", ".releases-list", "newRelease", "img");
-    main("search?q=a&type=album", "albums", ".featured-album-list", "featuredAlbums", "img");
+    main("search?q=a&type=album", "albums", ".featured-album-list", "featuredAlbums", "img", () => {
+/*         homemadeSwiper('.featured-album-list', ".featured-album-list__img")
+ */    });
 } else if (document.title === "Album Details") {
     main("search?q=a&type=album&limit=1", "albums", ".album-details", "featuredAlbum", "img", () => {
         main(`albums/${id}/tracks?limit=50`, "", ".song-list", "track", "", () => {

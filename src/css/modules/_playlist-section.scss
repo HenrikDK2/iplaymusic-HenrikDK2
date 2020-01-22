@@ -5,12 +5,13 @@
 .playlist__heading {
   font-size: 2rem;
   font-weight: bold;
-  color: var(--color);
+  color: var(--color-heading);
 }
 
 .playlist__background {
   position: absolute;
   top: 0;
+  height: 300px;
   left: 0;
   width: 100vw;
   z-index: -1;
