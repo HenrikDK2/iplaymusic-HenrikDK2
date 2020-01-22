@@ -1,4 +1,3 @@
-let id;
 const clientId = "bcc38354dfa04281b499fbfd781e726b";
 const clientSecret = "8283e0b92ce9494f99f4b674046016a1";
 const key = btoa(clientId + ":" + clientSecret);
@@ -18,35 +17,38 @@ const observer = new IntersectionObserver(entries => {
         }
     });
 }, { rootMargin: "300px 0px" });
+let id;
+let getToken = true;
 
-function token() {
-    return fetch("https://accounts.spotify.com/api/token", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Authorization": "Basic " + key
-        },
-        body: "grant_type=client_credentials"
-    }).then(res => res.json())
-        .then(data => {
-            myFetch.init({
-                address: "https://api.spotify.com/v1/",
-                key: "Bearer " + data.access_token
-            });
+async function token() {
+    if (getToken === true) {
+        return fetch("https://accounts.spotify.com/api/token", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Authorization": "Basic " + key
+            },
+            body: "grant_type=client_credentials"
+        }).then(res => res.json())
+            .then(data => {
+                myFetch.init({
+                    address: "https://api.spotify.com/v1/",
+                    key: "Bearer " + data.access_token
+                });
+                getToken = false;
+            })
+    } else {
+        return myFetch.get('browse/featured-playlists?limit=1').then(res => {
+            if (res.error && res.error.status >= 400) {
+                getToken = true;
+                token();
+            }
         })
-}
-
-function test() {
-    myFetch.get('browse/featured-playlists?limit=1').then(res => {
-        if (res.error && res.error.status >= 400) {
-            token();
-        }
-    })
+    }
 }
 
 async function main(api, apiData, listSelector, templateID, observeSelector, callback) {
     await token();
-    await test();
     myFetch.get(api).then(res => {
         let list = document.querySelector(listSelector);
         if (res[apiData]) {
@@ -68,7 +70,7 @@ async function main(api, apiData, listSelector, templateID, observeSelector, cal
                 }
 
                 if (clone.querySelector(`${listSelector}__length`)) {
-                    clone.querySelector(`${listSelector}__length`).textContent = (array.duration_ms/60000).toFixed(2);
+                    clone.querySelector(`${listSelector}__length`).textContent = (array.duration_ms / 60000).toFixed(2);
                 }
 
                 if (clone.querySelector(`${listSelector}__artist`)) {
@@ -92,7 +94,7 @@ async function main(api, apiData, listSelector, templateID, observeSelector, cal
                 }
 
                 if (clone.querySelector(`${listSelector}__length`)) {
-                    clone.querySelector(`${listSelector}__length`).textContent = (array.duration_ms/60000).toFixed(2);
+                    clone.querySelector(`${listSelector}__length`).textContent = (array.duration_ms / 60000).toFixed(2);
                 }
 
                 if (clone.querySelector(`${listSelector}__songs-amount`)) {
