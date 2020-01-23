@@ -37,13 +37,15 @@
 .categories-list__heading {
   font-size: 0.9375rem;
   font-weight: bold;
-  color: var(--color);}
+  color: var(--color-heading);
+}
 
 .categories-list__icon {
   font-size: 0.9375rem;
   margin-bottom: 18px;
   font-weight: bold;
-  color: var(--color);}
+  color: var(--color-heading);
+}
 
 .categories-genre-list {
   list-style: none;
@@ -65,6 +67,7 @@
 .categories-genre-list__heading {
   font-weight: 300;
   margin: 0;
+  color: var(--color);
 }
 
 .categories-genre-list__link {
@@ -72,6 +75,9 @@
 }
 
 .categories-genre-list__img {
-  height: 12px;
   transform: rotate(180deg);
+}
+
+.categories-genre-list__img path{
+  fill:var(--color)
 }

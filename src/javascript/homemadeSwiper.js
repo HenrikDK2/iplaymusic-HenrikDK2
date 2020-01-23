@@ -19,7 +19,6 @@ function homemadeSwiper(containerSelector, childrenImages) {
 
     function getMouse(e) {
       let value = (lastTranslate + startMouseX) - e.clientX;
-      console.log((lastTranslate - startMouseX) - e.clientX)
 
       container.style.transform = "translateX(" + value + "px)";
     }

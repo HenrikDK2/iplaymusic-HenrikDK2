@@ -1,12 +1,9 @@
-.albums {
-  padding: var(--padding);
-}
-
 .albums__heading {
   background: var(--main-gradient);
   font-size: 2rem;
   font-weight: bold;
   max-width: 200px;
+  padding: 80px 25px 0;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -21,12 +18,14 @@
   font-weight: bold;
   font-size: 0.9375rem;
   color: var(--color);
+  padding: 0 25px;
 }
 
 .albums-featured__view {
   text-decoration: none;
   background: var(--main-gradient);
   max-width: 200px;
+  padding: 0 25px;
   font-size: 0.9375rem;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -34,12 +33,9 @@
 
 .featured-album-list {
   list-style: none;
+  margin: 0;
   padding: 0;
-  top: 225px;
-  left: 20px;
-  position: absolute;
-  display: flex;
-}
+} 
 
 .featured-album-list__item {
   width: 130px;
@@ -50,5 +46,6 @@
 .featured-album-list__img {
   object-fit: cover;
   width: 100%;
+  border-radius: 8px;
   height: 100%;
 }

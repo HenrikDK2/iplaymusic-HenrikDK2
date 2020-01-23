@@ -48,9 +48,8 @@ async function token() {
     }
 }
 
-function conditions(array, listSelector, templateID, list) {
+function conditions(array, listSelector, templateID, list, i) {
     if (templateID) {
-
         let clone = document.getElementById(templateID).content.cloneNode(true);
         if (clone.querySelector(`${listSelector}__heading`)) {
             clone.querySelector(`${listSelector}__heading`).textContent = array.name;
@@ -101,23 +100,40 @@ function conditions(array, listSelector, templateID, list) {
     if (array.id) {
         id = array.id
     }
+
+    if(listSelector === ".categories-list"){
+        const bgContainer = ['#D70060', '#E54028', '#F18D05', '#F2BC06', '#5EB11C', '#3A7634', '#0ABEBE', '#00A1CB', '#115793']
+        document.querySelectorAll(`${listSelector}__button`)[i].style.backgroundColor = bgContainer[i % bgContainer.length];
+    }
+
+    if(document.querySelectorAll(`${listSelector}__item`)[i].getAttributeNames().filter(elm => elm === "data-id")[0] === "data-id"){
+        document.querySelectorAll(`${listSelector}__item`)[i].setAttribute('data-id', array.id)
+    }
+
+    
+    if(document.querySelectorAll(`${listSelector}__item`)[i].getAttributeNames().filter(elm => elm === "data-amount")[0] === "data-amount"){
+        document.querySelectorAll(`${listSelector}__item`)[i].setAttribute('data-amount', "Top "+array.total_tracks)
+    }
+
+    if(document.querySelectorAll(`${listSelector}__item`)[i].getAttributeNames().filter(elm => elm === "data-name")[0] === "data-name"){
+        document.querySelectorAll(`${listSelector}__item`)[i].setAttribute('data-name', array.name)
+    }
 }
 
 async function main(api, apiData, listSelector, templateID, observeSelector, callback) {
     await token();
     myFetch.get(api).then(res => {
-        console.log(res)
         let list = document.querySelector(listSelector);
         if (res[apiData]) {
-            res[apiData].items.forEach(array => {
-                conditions(array, listSelector, templateID, list);
+            res[apiData].items.forEach((array, i) => {
+                conditions(array, listSelector, templateID, list, i);
             });
         } else if (res.items) {
-            res.items.forEach(array => {
-                conditions(array, listSelector, templateID, list);
+            res.items.forEach((array, i) => {
+                conditions(array, listSelector, templateID, list, i);
             });
         } else {
-            conditions(res, listSelector, templateID, list);
+            conditions(res, listSelector, templateID, list, i);
         }
     }).then(() => {
         if (observeSelector && observeSelector !== "") {
@@ -141,8 +157,14 @@ if (document.title === "Featured") {
 } else if (document.title === "Albums") {
     main("browse/new-releases?country=DK&offset=0&limit=30", "albums", ".releases-list", "newRelease", "img");
     main("search?q=a&type=album", "albums", ".featured-album-list", "featuredAlbums", "img", () => {
-/*         homemadeSwiper('.featured-album-list', ".featured-album-list__img")
- */    });
+        var elem = document.querySelector('.featured-album-list');
+        var flkty = new Flickity(elem, {
+            cellAlign: 'center',
+            contain: true,
+            prevNextButtons: false,
+            pageDots: false
+        });
+    });
 } else if (document.title === "Album Details") {
     main("search?q=a&type=album&limit=1", "albums", ".album-details", "featuredAlbum", "img", () => {
         main(`albums/${id}/tracks?limit=50`, "", ".song-list", "track", "", () => {
@@ -159,7 +181,26 @@ if (document.title === "Featured") {
     })
 } else if (document.title === "Playlist") {
     main("search?q=a&type=album", "albums", ".playlist-list", "playlist", "img", () => {
-        main(`albums/${id}/tracks?limit=50`, "", ".playlist-songs-list", "track", "")
+        var elem = document.querySelector('.playlist-list');
+        var flkty = new Flickity(elem, {
+            cellAlign: 'center',
+            contain: true,
+            wrapAround: true,
+            prevNextButtons: false,
+            pageDots: false,
+            on: {
+                ready: function() {
+                  console.log('Flickity ready');
+
+                }
+              }
+        });
+        flkty.on( 'change', function( index ) {
+            document.querySelector('.playlist-songs-list').innerHTML="";
+            document.querySelector('.playlist-songs__songs').textContent = document.querySelectorAll('.playlist-list__item')[index].getAttribute('data-name');
+            document.querySelector('.playlist-songs__top-songs').textContent = document.querySelectorAll('.playlist-list__item')[index].getAttribute('data-amount');
+            main(`albums/${document.querySelectorAll('.playlist-list__item')[index].getAttribute('data-id')}/tracks?limit=50`, "", ".playlist-songs-list", "track", "")
+        });
     });
 } else if (document.title === "Player") {
     main("search?q=a&type=artist&limit=1", "artists", ".profile__img", "", "")
