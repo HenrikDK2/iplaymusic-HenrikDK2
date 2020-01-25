@@ -1,3 +1,15 @@
+@keyframes popUp{
+  0%{
+    transform: translateY(20%);
+    opacity: 0;
+  }
+
+  100%{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .releases {
   padding: 20px 25px 0;
 }
@@ -25,7 +37,7 @@
 
 .releases-list {
   list-style: none;
-  margin: 0;
+  margin: 0 0 100px 0;
   padding: 0;
 }
 
@@ -35,10 +47,15 @@
   width: 100%;
 }
 
+.releases-list__item_anim{
+  animation: popUp 1s;
+}
+
 .releases-list__container {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  color: var(--color);
 }
 
 .releases-list__img-container {
@@ -55,7 +72,6 @@
 .releases-list__heading {
   margin: 0;
   width: 45vw;
-  color: var(--color);
   font-size: 0.875rem;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -65,7 +81,6 @@
 .releases-list__artist {
   font-size: 0.75rem;
   margin: 2px 0 0 0;
-  color: var(--color);
 }
 
 .releases-list__songs-amount {

@@ -34,7 +34,7 @@
 .featured-album-list {
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 0 0 0 25px;
 } 
 
 .featured-album-list__item {
@@ -48,4 +48,9 @@
   width: 100%;
   border-radius: 8px;
   height: 100%;
+}
+
+//Flickity
+.flickity-slider{
+  animation: slideThroughAlbum 2s cubic-bezier(.32,.97,.98,1);
 }

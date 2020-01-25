@@ -12,6 +12,11 @@
 @import "modules/player";
 @import "modules/nav-footer";
 
+*{
+  transition: background .25s ease-out;
+  transition-property: background color;
+}
+
 body {
   font-family: var(--main-font);
   overflow-x: hidden;

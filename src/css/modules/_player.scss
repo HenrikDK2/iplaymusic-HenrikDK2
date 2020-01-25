@@ -41,7 +41,11 @@
 }
 
 .player-menu {
-  margin-top: 275px;
+  position: absolute;
+  transform: translateX(-50%);
+  bottom: 25px;
+  left: 50%;
+  width: calc(100vw - 25px);
 }
 
 .player-menu__title,

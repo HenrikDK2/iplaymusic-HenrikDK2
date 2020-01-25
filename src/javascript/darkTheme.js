@@ -1,6 +1,9 @@
 const toggle = document.getElementsByClassName('footer-nav-list__item')[3];
 let dark = false;
-toggle.addEventListener('click', changeTheme);
+
+if(toggle){
+  toggle.addEventListener('click', changeTheme);
+}
 
 if (JSON.parse(localStorage.getItem('dark')) !== null) {
   dark = JSON.parse(localStorage.getItem('dark'));;
