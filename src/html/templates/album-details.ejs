@@ -1,9 +1,14 @@
 <%- include('../partials/head.ejs') %>
+<script src="/assets/javascript/album-details.js" defer></script>
 <title>Album Details</title>
 <%- include('../partials/after-head.ejs') %>
 <%- include('../partials/header.ejs') %>
 <main>
     <section class="album-details">
+        <h2 class="album-details__heading">Placeholder</h2>
+        <h4 class="album-details__songs-amount">12 Songs</h4>
+        <p class="album-details__genre"></p>
+        <ul class="genre-list"></ul>
     </section>
     <section class="song-section">
         <h3 class="song-section__heading">All Songs</h3>
@@ -11,18 +16,11 @@
     </section>
 </main>
 
-<template id="featuredAlbum">
-    <h2 class="album-details__heading">Placeholder</h2>
-    <h4 class="album-details__songs-amount">12 Songs</h4>
-    <p class="album-details__genre">Genres hastags</p>
-    <ul class="genre-list"></ul>
-</template>
-
 <template id="track">
     <li class="song-list__item">
-        <figure class="song-list__img-container">
+        <a href="" class="song-list__img-container">
             <img src="/assets/images/play.svg" alt="play icon" class="song-list__img">
-        </figure>
+        </a>
 
         <div class="song-list__container">
             <h3 class="song-list__heading">Placeholder title</h3>

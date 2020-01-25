@@ -1,4 +1,5 @@
 <%- include('../partials/head.ejs') %>
+<script src="/assets/javascript/albums.js" defer></script>
 <title>Albums</title>
 <%- include('../partials/after-head.ejs') %>
 <%- include('../partials/header.ejs') %>
@@ -43,8 +44,10 @@
 
 <template id="featuredAlbums">
     <li class="featured-album-list__item">
-        <div class="loader simple-circle"></div>
-        <img src="" alt="Album" class="featured-album-list__img carousel-cell">
+        <a href="">
+            <div class="loader simple-circle"></div>
+            <img src="" alt="Album" class="featured-album-list__img carousel-cell">
+        </a>
     </li>
 </template>
 <%- include('../partials/footer.ejs') %>

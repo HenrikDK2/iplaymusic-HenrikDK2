@@ -35,7 +35,7 @@
   list-style: none;
   margin: 0;
   padding: 0 0 0 25px;
-} 
+}
 
 .featured-album-list__item {
   width: 130px;
@@ -51,6 +51,6 @@
 }
 
 //Flickity
-.flickity-slider{
-  animation: slideThroughAlbum 2s cubic-bezier(.32,.97,.98,1);
+.flickity-slider {
+  animation: slideThroughAlbum 2s cubic-bezier(0.32, 0.97, 0.98, 1);
 }

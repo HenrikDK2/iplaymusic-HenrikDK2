@@ -1,4 +1,5 @@
 <%- include('../partials/head.ejs') %>
+<script src="/assets/javascript/playlist.js" defer></script>
 <title>Playlist</title>
 <%- include('../partials/after-head.ejs') %>
 <%- include('../partials/header.ejs') %>
@@ -20,11 +21,11 @@
 
 <template id="track">
     <li class="playlist-songs-list__item">
-        <figure class="playlist-songs-list__img-container">
+        <a href="" class="playlist-songs-list__img-container">
             <img src="/assets/images/play.svg" alt="play icon" class="playlist-songs-list__img">
-        </figure>
+        </a>
 
-        <div class="playlist-songs-list__container">
+        <div href="" class="playlist-songs-list__container">
             <h3 class="playlist-songs-list__heading">Placeholder title</h3>
             <p class="playlist-songs-list__artist">Sony kaleb</p>
         </div>
@@ -36,7 +37,7 @@
 <template id="playlist">
     <li data-id="" data-name="" data-amount="" class="playlist-list__item">
         <div class="loader simple-circle"></div>
-        <img src="" alt="Playlist" class="playlist-list__img">
+        <img src="" data-imgSrc="" alt="Playlist" class="playlist-list__img">
     </li>
 </template>
 <%- include('../partials/footer.ejs') %>

@@ -30,6 +30,7 @@
 .genre-list {
   display: flex;
   margin: 0;
+  flex-wrap: wrap;
   padding: 0;
   list-style: none;
 }

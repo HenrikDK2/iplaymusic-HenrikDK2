@@ -1,59 +1,62 @@
-
-.song-section{
-    padding: 0 25px;
-    margin-top: 40px;
-    box-sizing: border-box;
+.song-section {
+  padding: 0 25px;
+  margin-top: 40px;
+  box-sizing: border-box;
 }
 
-.song-section__heading{
-    color: var(--color);
-    font-weight: bold;
-    font-size: 0.9375rem;
+.song-section__heading {
+  color: var(--color);
+  font-weight: bold;
+  font-size: 0.9375rem;
 }
 
-.song-list{
-    list-style: none;
-    margin: 0;
-    padding:0;
-    color:var(--color)
+.song-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  color: var(--color);
 }
 
-.song-list__item{
-    margin: 15px 0;
-    display: flex;
-    align-items: center;
-    width: 100%;
+.song-list__item {
+  margin: 15px 0;
+  display: flex;
+  align-items: center;
+  width: 100%;
 }
 
-.song-list__container{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.song-list__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.song-list__img-container{
-    width: 30px;
-    cursor: pointer;
-    height: 30px;
-    margin: 0 20px 0 0;
+.song-list__img-container {
+  width: 30px;
+  cursor: pointer;
+  height: 30px;
+  margin: 0 20px 0 0;
 }
-.song-list__img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.song-list__heading{
-    margin: 0;
-    font-size: .875rem;
+.song-list__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.song-list__artist{
-    font-size: .75rem;
-    margin: 2px 0 0 0;
+.song-list__heading {
+  margin: 0;
+  font-size: 0.875rem;
+  width: 45vw;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
-.song-list__length{
-    font-size: .875rem;
-    margin-left: auto;
+.song-list__artist {
+  font-size: 0.75rem;
+  margin: 2px 0 0 0;
+}
+
+.song-list__length {
+  font-size: 0.875rem;
+  margin-left: auto;
 }

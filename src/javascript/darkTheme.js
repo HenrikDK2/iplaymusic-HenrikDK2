@@ -1,7 +1,7 @@
 const toggle = document.getElementsByClassName('footer-nav-list__item')[3];
 let dark = false;
 
-if(toggle){
+if (toggle) {
   toggle.addEventListener('click', changeTheme);
 }
 
