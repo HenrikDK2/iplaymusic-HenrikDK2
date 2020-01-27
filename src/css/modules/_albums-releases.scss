@@ -43,12 +43,17 @@
 
 .releases-list__item {
   margin: 15px 0;
-  display: flex;
   width: 100%;
 }
 
 .releases-list__item_anim {
   animation: popUp 1s;
+}
+
+.releases-list__link{
+  user-select: none;
+  outline: none;
+  display: flex;
 }
 
 .releases-list__container {

@@ -15,8 +15,18 @@ const observer = new IntersectionObserver(entries => {
             }
         }
     });
-}, { rootMargin: "0px 0px" });
+}, { rootMargin: "300px 0px" });
 let getToken = true;
+
+//After DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelector('.nav-list__heading').textContent = document.title;
+    document.querySelector('.nav-list__link').addEventListener('click', (e) => {
+        e.preventDefault();
+        window.history.back();
+    });
+
+})
 
 //Initialize myFetch
 async function token() {

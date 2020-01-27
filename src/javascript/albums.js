@@ -40,6 +40,7 @@
   newReleases.albums.items.forEach(album => {
     let clone = document.getElementById('newRelease').content.cloneNode(true);
     let img = clone.querySelector('img');
+    clone.querySelector('a').href = `/album-details?id=${album.id}`;
     img.setAttribute('data-imgSrc', album.images[0].url)
     clone.querySelector('.releases-list__heading').textContent = album.name;
     clone.querySelector('.releases-list__artist').textContent = album.artists[0].name;

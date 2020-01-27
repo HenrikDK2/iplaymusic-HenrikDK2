@@ -1,3 +1,10 @@
+[title="title"] {
+  .nav .nav-list__item {
+    color: var(--color-heading);
+    fill: var(--color-heading);
+  }
+}
+
 .player-section {
   background: url("https://via.placeholder.com/1200x1000");
   background-position: center top;
@@ -25,8 +32,8 @@
   z-index: 0;
   transform: translate(-50%, -50%);
   top: 50%;
-  height: 300px;
-  width: calc(100% + 80px);
+  height: 350px;
+  width: 350px;
   height: auto;
   left: 50%;
 }
@@ -35,8 +42,8 @@
   z-index: 1;
   border-radius: 50%;
   box-sizing: border-box;
-  width: calc(100% - 100px);
-  height: auto;
+  width: 200px;
+  height: 200px;
   object-fit: cover;
 }
 
@@ -85,7 +92,7 @@
 .progress__time-container {
   display: flex;
   justify-content: space-between;
-  color: var(--color);
+  color: var(--color-heading);
   font-weight: 300;
 }
 

@@ -11,100 +11,98 @@ const ejs = require("gulp-ejs");
 const htmlmin = require('gulp-htmlmin');
 const pxtorem = require('gulp-pxtorem');
 
-function Fonts(done){
+function Fonts(done) {
     gulp.src("src/css/fonts/*.*")
-    .pipe(gulp.dest("dist/assets/css/fonts/"))
-    .pipe(connect.reload());
+        .pipe(gulp.dest("dist/assets/css/fonts/"))
+        .pipe(connect.reload());
     done()
 }
 
-function Images(done){
+function Images(done) {
     gulp.src("src/images/**/*.*")
-    .pipe(imagemin())
-    .pipe(gulp.dest('dist/assets/images/'))
-    .pipe(connect.reload());
+        .pipe(imagemin())
+        .pipe(gulp.dest('dist/assets/images/'))
+        .pipe(connect.reload());
     done();
 }
 
-function JS(done){
+function JS(done) {
     gulp.src("src/javascript/**/*.js")
-    .pipe(gulp.dest('dist/assets/javascript'))
-    .pipe(connect.reload());
+        .pipe(gulp.dest('dist/assets/javascript'))
+        .pipe(connect.reload());
     done();
 }
 
 function Html(done) {
     gulp.src("./src/html/templates/*.ejs")
-       .pipe(ejs())
-       .pipe(rename(function (path) {
-          if (path.basename != "index") {
-             path.dirname = path.basename;
-             path.basename = "index";
-          }
-          path.extname = ".html"
-       }))
-       .pipe(gulp.dest("./dist"))
-       .pipe(connect.reload());
+        .pipe(ejs())
+        .pipe(rename(function (path) {
+            if (path.basename != "index") {
+                path.dirname = path.basename;
+                path.basename = "index";
+            }
+            path.extname = ".html"
+        }))
+        .pipe(gulp.dest("./dist"))
+        .pipe(connect.reload());
     done()
- }
+}
 
- function Scss(done) {
+function Scss(done) {
     gulp.src("./src/css/**/*.scss")
-       .pipe(sass())
-       .pipe(gulp.dest("./dist/assets/css"))
-       .pipe(connect.reload());
+        .pipe(sass())
+        .pipe(gulp.dest("./dist/assets/css"))
+        .pipe(connect.reload());
     done();
- }
+}
 
-function gulpDone(){
+function gulpDone() {
     //Fonts
     gulp.src("src/css/fonts/*.*")
-    .pipe(gulp.dest("dist/assets/css/fonts/"));
+        .pipe(gulp.dest("dist/assets/css/fonts/"));
 
     //Images
     gulp.src("src/images/**/*.*")
-    .pipe(imagemin())
-    .pipe(gulp.dest('dist/assets/images/'));
+        .pipe(imagemin())
+        .pipe(gulp.dest('dist/assets/images/'));
 
     //Javascript
     gulp.src("src/javascript/**/*.js")
-    .pipe(babel({presets: ['@babel/env']}))
-    .pipe(uglify())
-    .pipe(gulp.dest('dist/assets/javascript'));
+        .pipe(babel({ presets: ['@babel/env'] }))
+        .pipe(uglify())
+        .pipe(gulp.dest('dist/assets/javascript'));
 
     //Html
     gulp.src("./src/html/templates/*.ejs")
-    .pipe(ejs())
-    .pipe(rename(function (path) {
-       if (path.basename != "index") {
-          path.dirname = path.basename;
-          path.basename = "index";
-       }
-       path.extname = ".html"
-    }))
-    .pipe(htmlmin({ collapseWhitespace: true }))
-    .pipe(gulp.dest("./dist"));
+        .pipe(ejs())
+        .pipe(rename(function (path) {
+            if (path.basename != "index") {
+                path.dirname = path.basename;
+                path.basename = "index";
+            }
+            path.extname = ".html"
+        }))
+        .pipe(htmlmin({ collapseWhitespace: true }))
+        .pipe(gulp.dest("./dist"));
 
     //CSS
     gulp.src("src/css/main.css")
-    .pipe(cleanCSS({compatibility: "ie7"}))
-    .pipe(autoprefixer({cascade: false}))
-    .pipe(pxtorem({map: true}))
-    .pipe(gulp.dest('dist/assets/css/'));
+        .pipe(cleanCSS({ compatibility: "ie7" }))
+        .pipe(autoprefixer({ cascade: false }))
+        .pipe(pxtorem({ map: true }))
+        .pipe(gulp.dest('dist/assets/css/'));
     connect.reload();
 }
 
-function watchDev(){
+function watchDev() {
     gulp.watch("src/images/**/*.*", { ignoreInitial: false }, Images);
     gulp.watch("src/html/**/*.ejs", { ignoreInitial: false }, Html);
-    gulp.watch("src/css/**/*.scss", {ignoreInitial: false}, Scss);
-    gulp.watch("src/css/fonts/*.*", {ignoreInitial: false}, Fonts);
-    gulp.watch("src/javascript/**/*.js", {ignoreInitial: false}, JS);
+    gulp.watch("src/css/**/*.scss", { ignoreInitial: false }, Scss);
+    gulp.watch("src/css/fonts/*.*", { ignoreInitial: false }, Fonts);
+    gulp.watch("src/javascript/**/*.js", { ignoreInitial: false }, JS);
 }
 
-
-
-gulp.task('final', function(done){
+gulp.task('final', function (done) {
     gulpDone();
 
     connect.server({
@@ -114,7 +112,7 @@ gulp.task('final', function(done){
     done();
 });
 
-gulp.task("dev", function(done){
+gulp.task("dev", function (done) {
     watchDev();
     connect.server({
         root: 'dist',

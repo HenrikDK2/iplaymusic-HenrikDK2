@@ -6,8 +6,9 @@
 
   for (let i = 0, category = categories.categories.items; i < category.length; i++) {
     let playlist = await getData(`browse/categories/${category[i].id}/playlists`);
+    let selectPlaylist = await getData(`playlists/${param.get('id')}`);
     if (!playlist.error) {
-      playlist.playlists.items.forEach(playlist => {
+      playlist.playlists.items.forEach((playlist) => {
         let clone = document.getElementById('playlist').content.cloneNode(true);
         let img = clone.querySelector('.playlist-list__img');
         indexCounter++;
@@ -55,7 +56,6 @@ async function resetList(i) {
   document.querySelector('.playlist-songs__top-songs').textContent = "Top " + playlistAmount + " Songs";
   data.items.forEach(track => {
     if (track.track) {
-      console.log(track.track)
       let clone = document.getElementById('track').content.cloneNode(true);
       clone.querySelector('a').href = `/player?id=${track.track.id}`;
       clone.querySelector('.playlist-songs-list__length').textContent = (track.track.duration_ms / 60000).toFixed(2).replace(".", ":");
