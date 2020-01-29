@@ -50,8 +50,9 @@
   animation: popUp 1s;
 }
 
-.releases-list__link{
+.releases-list__link {
   user-select: none;
+  text-decoration: none;
   outline: none;
   display: flex;
 }

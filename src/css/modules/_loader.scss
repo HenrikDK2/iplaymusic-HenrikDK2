@@ -32,7 +32,7 @@ variables above and don't change anything in the actual loader code
     }
 }
 
-.loader.simple-circle {
+.loader {
     z-index: 5;
     transform-origin: center center;
     border: var(--line-width, 4px) solid var(--loader-color-secondary, #fff);
@@ -43,4 +43,9 @@ variables above and don't change anything in the actual loader code
     padding-bottom: var(--loader-width, 100px);
     border-radius: 50%;
     animation: circle-loader var(--animation-duration, 1s) infinite ease-out;
+}
+
+.loader_fixed{
+    width: 155px;
+    padding-bottom: 150px;
 }

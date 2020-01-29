@@ -26,6 +26,13 @@ function Images(done) {
     done();
 }
 
+function Music(done) {
+    gulp.src("src/music/**/*.*")
+        .pipe(gulp.dest('dist/assets/music/'))
+        .pipe(connect.reload());
+    done();
+}
+
 function JS(done) {
     gulp.src("src/javascript/**/*.js")
         .pipe(gulp.dest('dist/assets/javascript'))
@@ -96,6 +103,7 @@ function gulpDone() {
 
 function watchDev() {
     gulp.watch("src/images/**/*.*", { ignoreInitial: false }, Images);
+    gulp.watch("src/music/**/*.*", { ignoreInitial: false }, Music);
     gulp.watch("src/html/**/*.ejs", { ignoreInitial: false }, Html);
     gulp.watch("src/css/**/*.scss", { ignoreInitial: false }, Scss);
     gulp.watch("src/css/fonts/*.*", { ignoreInitial: false }, Fonts);

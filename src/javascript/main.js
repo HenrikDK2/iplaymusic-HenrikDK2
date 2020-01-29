@@ -46,17 +46,16 @@ async function token() {
                 });
                 getToken = false;
             })
-    } else {
-        myFetch.get('browse/featured-playlists?limit=1').then(res => {
-            if (res.error) {
-                getToken = true;
-                token();
-            }
-        })
     }
 }
 
 async function getData(api) {
     await token();
-    return myFetch.get(api);
+    const data = await myFetch.get(api);
+    if(!data.error){
+        return data;
+    }else{
+        getToken = true;
+        getData(api);
+    }
 }

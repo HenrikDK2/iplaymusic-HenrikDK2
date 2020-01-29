@@ -4,10 +4,9 @@
   let initIndex;
   let categories = await getData('browse/categories');
 
-  for (let i = 0, category = categories.categories.items; i < category.length; i++) {
+  for (let i = 0, category = categories.categories.items; i < 2; i++) {
     let playlist = await getData(`browse/categories/${category[i].id}/playlists`);
-    let selectPlaylist = await getData(`playlists/${param.get('id')}`);
-    if (!playlist.error) {
+    if (playlist) {
       playlist.playlists.items.forEach((playlist) => {
         let clone = document.getElementById('playlist').content.cloneNode(true);
         let img = clone.querySelector('.playlist-list__img');
@@ -26,6 +25,31 @@
       });
     }
   }
+
+  if (param.get('id')) {
+    let exist = false;
+    let selectPlaylist = await getData(`playlists/${param.get('id')}`);
+    let test = document.querySelectorAll('.playlist-list__item').forEach(item => {
+      if (item.getAttribute('data-id') === param.get('id')) {
+        exist = true;
+      }
+    })
+
+    if (exist !== true) {
+      let clone = document.getElementById('playlist').content.cloneNode(true);
+      let img = clone.querySelector('.playlist-list__img');
+      img.setAttribute('data-imgSrc', selectPlaylist.images[0].url)
+      clone.querySelector('.playlist-list__item').setAttribute('data-id', selectPlaylist.id)
+      clone.querySelector('.playlist-list__item').setAttribute('data-name', selectPlaylist.name)
+      clone.querySelector('.playlist-list__item').setAttribute('data-amount', selectPlaylist.tracks.total)
+      initIndex = indexCounter + 1;
+      list.append(clone);
+      observer.observe(img);
+    }
+  }
+
+  list.querySelector('.loader').remove();
+  document.querySelectorAll('.playlist-list__item').forEach(item => item.style.display = "block");
 
   new Flickity(list, {
     cellAlign: 'center',
