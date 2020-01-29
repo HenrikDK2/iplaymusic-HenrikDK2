@@ -3,6 +3,7 @@
   const track = await getData(`tracks/${param.get('id')}`);
   const artist = await getData(`artists/${track.artists[0].id}`)
   const progress = document.querySelector('.progress__bar');
+  let circleMoving = false;
   let currentIndex = 0;
   let audio = new Audio(songs[0]);
   let play = true;
@@ -10,6 +11,11 @@
   document.querySelector('.player-menu__artist').textContent = track.artists[0].name;
   document.querySelector('.profile__img').src = artist.images[1].url;
   document.querySelector('.player-section__background').src = track.album.images[0].url;
+  document.querySelectorAll('.nav-list__item').forEach(item => {
+    if (item.querySelector('h2')) item.querySelector('h2').style.color = "var(--color-heading)"
+    if (item.querySelector('path')) item.querySelector('path').style.fill = "var(--color-heading)"
+    if (item.querySelector('path')) item.querySelector('path').style.fill = "var(--color-heading)"
+  })
 
   //Play & Pause
   document.querySelector(".player-functions__play").addEventListener('click', () => {
@@ -53,7 +59,7 @@
 
   //Drag
   document.querySelector('.progress__current').addEventListener('touchstart', (e) => {
-    circleMoving = false;
+    circleMoving = true;
     let multiply;
 
     document.querySelector('.progress__current').addEventListener('touchmove', (e) => {
@@ -68,7 +74,7 @@
       document.querySelector('.progress__current').style.left = `${widthProcent}%`;
     });
     document.querySelector('.progress__current').addEventListener('touchend', (e) => {
-      circleMoving = true;
+      circleMoving = false;
       audio.currentTime = multiply * audio.duration;
     })
   })
@@ -76,7 +82,7 @@
   //Update timer
   setInterval(() => {
     document.querySelector('.progress__song-time').textContent = formatTime(audio.duration.toFixed(0));
-    if (circleMoving === true) {
+    if (circleMoving === false) {
       const procent = (audio.currentTime / audio.duration) * 100;
       document.querySelector('.progress__current').style.left = `${procent}%`;
       document.querySelector('.progress__current-time').textContent = formatTime(audio.currentTime.toFixed(0));
