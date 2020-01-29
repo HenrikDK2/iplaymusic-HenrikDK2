@@ -1,3 +1,17 @@
+@keyframes pulse {
+  0% {
+    transform: scale(1) translate(-50%, -50%);
+  }
+
+  50% {
+    transform: scale(1.1) translate(-45%, -45%);
+  }
+
+  100% {
+    transform: scale(1) translate(-50%, -50%);
+  }
+}
+
 .player-section {
   box-sizing: border-box;
 }
@@ -33,6 +47,10 @@
   width: 350px;
   height: auto;
   left: 50%;
+}
+
+.profile__background_anim {
+  animation: pulse 3s infinite;
 }
 
 .profile__img {
@@ -99,6 +117,7 @@
 }
 
 .player-functions {
+  height: 75px;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -107,6 +126,10 @@
 .player-functions__skip-forward,
 .player-functions__rewind-forward {
   transform: rotate(180deg);
+}
+
+.player-functions__play {
+  width: 60px;
 }
 
 .player-functions__skip-forward,

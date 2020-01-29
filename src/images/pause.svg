@@ -1,0 +1,10 @@
+<svg id="Component_1_1" data-name="Component 1 – 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="38" height="58" viewBox="0 0 38 58">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ee0979"/>
+      <stop offset="1" stop-color="#ff6a00"/>
+    </linearGradient>
+  </defs>
+  <rect id="Rectangle_18" data-name="Rectangle 18" width="10" height="58" rx="4" transform="translate(28)" fill="url(#linear-gradient)"/>
+  <rect id="Rectangle_19" data-name="Rectangle 19" width="10" height="58" rx="4" fill="url(#linear-gradient)"/>
+</svg>

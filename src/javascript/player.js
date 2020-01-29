@@ -3,6 +3,10 @@
   const track = await getData(`tracks/${param.get('id')}`);
   const artist = await getData(`artists/${track.artists[0].id}`)
   const progress = document.querySelector('.progress__bar');
+  const currentProgress = document.querySelector('.progress__current');
+  const profileBackground = document.querySelector('.profile__background');
+  const songDuration = document.querySelector('.progress__song-time');
+  const songTime = document.querySelector('.progress__current-time');
   let circleMoving = false;
   let currentIndex = 0;
   let audio = new Audio(songs[0]);
@@ -18,11 +22,15 @@
   })
 
   //Play & Pause
-  document.querySelector(".player-functions__play").addEventListener('click', () => {
+  document.querySelector(".player-functions__play").addEventListener('click', (e) => {
     if (play === true) {
+      e.target.src = "/assets/images/pause.svg";
+      profileBackground.classList.add('profile__background_anim');
       audio.play();
       play = false;
     } else {
+      e.target.src = "/assets/images/player-play.svg";
+      profileBackground.classList.remove('profile__background_anim');
       audio.pause();
       play = true;
     }
@@ -58,11 +66,11 @@
   }
 
   //Drag
-  document.querySelector('.progress__current').addEventListener('touchstart', (e) => {
+  currentProgress.addEventListener('touchstart', (e) => {
     circleMoving = true;
     let multiply;
 
-    document.querySelector('.progress__current').addEventListener('touchmove', (e) => {
+    currentProgress.addEventListener('touchmove', (e) => {
       let touchMove = e.touches[0].clientX - 16;
       if (touchMove > progress.clientWidth) touchMove = progress.clientWidth - 1;
       if (touchMove < 0) touchMove = 0;
@@ -70,10 +78,10 @@
       if (widthProcent < 10) {
         multiply = (widthProcent / 100)
       } else multiply = parseFloat("0." + widthProcent);
-      document.querySelector('.progress__current-time').textContent = formatTime((multiply * audio.duration).toFixed(0));
-      document.querySelector('.progress__current').style.left = `${widthProcent}%`;
+      songTime.textContent = formatTime((multiply * audio.duration).toFixed(0));
+      currentProgress.style.left = `${widthProcent}%`;
     });
-    document.querySelector('.progress__current').addEventListener('touchend', (e) => {
+    currentProgress.addEventListener('touchend', (e) => {
       circleMoving = false;
       audio.currentTime = multiply * audio.duration;
     })
@@ -81,11 +89,11 @@
 
   //Update timer
   setInterval(() => {
-    document.querySelector('.progress__song-time').textContent = formatTime(audio.duration.toFixed(0));
+    songDuration.textContent = formatTime(audio.duration.toFixed(0));
     if (circleMoving === false) {
       const procent = (audio.currentTime / audio.duration) * 100;
-      document.querySelector('.progress__current').style.left = `${procent}%`;
-      document.querySelector('.progress__current-time').textContent = formatTime(audio.currentTime.toFixed(0));
+      currentProgress.style.left = `${procent}%`;
+      songTime.textContent = formatTime(audio.currentTime.toFixed(0));
     }
 
     if (audio.currentTime === audio.duration) {

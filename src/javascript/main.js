@@ -25,7 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         window.history.back();
     });
-
 })
 
 //Initialize myFetch
@@ -52,9 +51,9 @@ async function token() {
 async function getData(api) {
     await token();
     const data = await myFetch.get(api);
-    if(!data.error){
+    if (!data.error) {
         return data;
-    }else{
+    } else {
         getToken = true;
         getData(api);
     }
