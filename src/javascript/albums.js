@@ -44,6 +44,8 @@
     img.setAttribute('data-imgSrc', album.images[0].url)
     clone.querySelector('.releases-list__heading').textContent = album.name;
     clone.querySelector('.releases-list__artist').textContent = album.artists[0].name;
+    console.log(album)
+    clone.querySelector('.releases-list__songs-amount').textContent = album.total_tracks + " Songs";
     listRelease.append(clone)
     observer.observe(img);
 

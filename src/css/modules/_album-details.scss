@@ -1,37 +1,43 @@
 .album-details {
   width: 100%;
   height: 400px;
-  background: url("https://via.placeholder.com/375x700");
-  background-position: center top;
-  background-size: cover;
   box-sizing: border-box;
-  padding: 80px 25px 0 25px;
-  background-repeat: no-repeat;
+  position: relative;
+}
+
+.album-details__background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  filter: brightness(50%);
+  z-index: -1;
 }
 
 .album-details__heading {
   font-size: 2.25rem;
   color: var(--color-heading);
-  margin: 0;
+  margin: 0 0 0 0;
+  padding: 80px 25px 0;
 }
 
 .album-details__songs-amount {
   font-size: 0.9375rem;
   color: var(--color-heading);
-  margin: 0;
+  margin: 0 0 0 0;
+  padding: 80px 25px 0 25px;
 }
 
 .album-details__genre {
   font-size: 0.875rem;
   color: var(--color-heading);
-  margin-top: 100px;
+  padding: 0px 25px;
 }
 
 .genre-list {
   display: flex;
   margin: 0;
   flex-wrap: wrap;
-  padding: 0;
+  padding: 0 25px;
   list-style: none;
 }
 

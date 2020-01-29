@@ -7,6 +7,7 @@
     clone.querySelector('a').setAttribute('href', `/playlist?id=${playlist.id}`);
     img.setAttribute('data-imgSrc', playlist.images[0].url)
     clone.querySelector('.featured-list__heading').textContent = playlist.name;
+    clone.querySelector('.featured-list__desc').textContent = playlist.type;
     list.append(clone)
     observer.observe(img);
   });
