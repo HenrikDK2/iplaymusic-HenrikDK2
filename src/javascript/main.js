@@ -50,11 +50,13 @@ async function token() {
 
 async function getData(api) {
     await token();
-    const data = await myFetch.get(api);
+    let data = await myFetch.get(api);
     if (!data.error) {
         return data;
     } else {
         getToken = true;
-        getData(api);
+        await token(api);
+        data = await myFetch.get(api);
+        return data;
     }
 }
