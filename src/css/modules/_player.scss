@@ -14,7 +14,7 @@
 
 .player-section {
   box-sizing: border-box;
-  padding-bottom: 250px;
+  padding-bottom: 220px;
 }
 
 .player-section__background {
@@ -33,7 +33,7 @@
   height: auto;
   width: 100%;
   display: flex;
-  top: 160px;
+  top: 50px;
   justify-content: center;
   align-items: center;
 }
@@ -46,7 +46,6 @@
   top: 50%;
   height: 350px;
   width: 350px;
-  height: auto;
   left: 50%;
 }
 
@@ -61,6 +60,7 @@
   width: 200px;
   height: 200px;
   object-fit: cover;
+  margin: 75px 0;
 }
 
 .player-menu {

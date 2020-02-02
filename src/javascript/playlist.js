@@ -6,7 +6,7 @@
 
   for (let i = 0, category = categories.categories.items; i < 2; i++) {
     let playlist = await getData(`browse/categories/${category[i].id}/playlists`);
-    if (playlist) {
+    if (playlist && playlist.playlists) {
       playlist.playlists.items.forEach((playlist) => {
         let clone = document.getElementById('playlist').content.cloneNode(true);
         let img = clone.querySelector('.playlist-list__img');
