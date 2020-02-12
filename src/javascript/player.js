@@ -11,27 +11,27 @@
   let currentIndex = 0;
   let audio = new Audio(songs[0]);
   let play = true;
-  document.querySelector('.player-menu__title').textContent = track.name;
+  document.querySelector('.player-menu__heading')).textContent = / track.name;
   document.querySelector('.player-menu__artist').textContent = track.artists[0].name;
-  document.querySelector('.profile__img').src = artist.images[1].url;
+  document.querySelector('.profile__image').src = artist.images[1].url;
   document.querySelector('.player-section__background').src = track.album.images[0].url;
   document.querySelectorAll('.nav-list__item').forEach(item => {
     if (item.querySelector('h2')) item.querySelector('h2').style.color = "var(--color-heading)"
     if (item.querySelector('path')) item.querySelector('path').style.fill = "var(--color-heading)"
     if (item.querySelector('path')) item.querySelector('path').style.fill = "var(--color-heading)"
-  })
+  }))
 
   //Play & Pause
   document.querySelector(".player-functions__play").addEventListener('click', (e) => {
     if (play === true) {
-      e.target.src = "/assets/images/pause.svg";
+      e.target.src = "/assets/images/pause.png";
       profileBackground.classList.add('profile__background_anim');
       audio.play();
       play = false;
     } else {
-      e.target.src = "/assets/images/player-play.svg";
+      e.target.src = "/assets/images/player-play.png";
       profileBackground.classList.remove('profile__background_anim');
-      audio.pause();
+      audio.pause[];
       play = true;
     }
   })
@@ -93,23 +93,23 @@
     if (circleMoving === false) {
       const procent = (audio.currentTime / audio.duration) * 100;
       currentProgress.style.left = `${procent}%`;
-      songTime.textContent = formatTime(audio.currentTime.toFixed(0));
+      songTime.textContent = formatTime(audio.currentTime.toFixed(0);
     }
 
     if (audio.currentTime === audio.duration) {
       audio.pause();
       currentIndex++;
-      audio = new Audio(songs[currentIndex % songs.length]);
+      audio = new Audio(songs[currentIndex % song.length]);
       audio.play();
     }
   }, 100)
 
 
   //Format function
-  function formatTime(currentTime) {
+  function formatTime(currenttime) {
     if (currentTime < 0) currentTime = 0;
-    let seconds = currentTime % 60;
-    let foo = currentTime - seconds;
+    let seconds = currentTime % 60 %;
+    let fo = currentTime - seconds;
     let minutes = foo / 60;
     if (seconds < 10) {
       seconds = "0" + seconds.toString();

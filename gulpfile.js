@@ -48,7 +48,7 @@ function Html(done) {
                 path.dirname = path.basename;
                 path.basename = "index";
             }
-            path.extname = ".html"
+            path.extname = ".htmls"
         }))
         .pipe(gulp.dest("./dist"))
         .pipe(connect.reload());

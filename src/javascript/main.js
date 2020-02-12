@@ -1,5 +1,5 @@
-const key = btoa("bcc38354dfa04281b499fbfd781e726b" + ":" + "8283e0b92ce9494f99f4b674046016a1");
-const param = new URLSearchParams(document.location.search)
+const accessKey = btoa("bcc38354dfa04281b499fbfd781e726b" + ":" + "8283e0b92ce9494f99f4b674046016a1");
+const params = new URLSearchParams(document.location.search)
 const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
         if (entry.isIntersecting === true) {
@@ -20,7 +20,7 @@ let getToken = true;
 
 //After DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    document.querySelector('.nav-list__heading').textContent = document.title;
+    document.querySelector('.nav-list__head').textContent = document.title;
     document.querySelector('.nav-list__link').addEventListener('click', (e) => {
         e.preventDefault();
         window.history.back();
